@@ -12,7 +12,7 @@ import (
 
 var reqStore sync.Map
 
-func prHandler(w http.ResponseWriter, r *http.Request) {
+func PrHandler(w http.ResponseWriter, r *http.Request) {
 	var req models.Request
 	//body decode
 	err := json.NewDecoder(r.Body).Decode(&req)
@@ -69,7 +69,7 @@ func prHandler(w http.ResponseWriter, r *http.Request) {
 		Length:  len(body),
 	}
 
-	w.Header().Add("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json")
 
 	encoder := json.NewEncoder(w)
 	err = encoder.Encode(response)

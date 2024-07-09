@@ -4,7 +4,7 @@ import (
 	"net/http"
 )
 
-func healthCheckHandler(w http.ResponseWriter, _ *http.Request) {
+func HealthCheckHandler(w http.ResponseWriter, _ *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("OK"))
 }
