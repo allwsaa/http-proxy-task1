@@ -7,7 +7,7 @@ require (
 	github.com/google/uuid v1.6.0
 )
 
-require github.com/swaggo/files v0.0.0-20220610200504-28940afbdbfe // indirect
+require github.com/swaggo/files v1.0.1 // indirect
 
 require (
 	github.com/KyleBanks/depth v1.2.1 // indirect

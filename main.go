@@ -13,20 +13,19 @@ import (
 
 // @title HTTP Proxy Service
 // @version 1.0
-// @Description This is a simple server for proxying HTTP requests
+// @description This is a simple server for proxying HTTP requests
 // @host localhost:8080
 // @BasePath/
 func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
-
+	//swagger endpoint
+	r.Get("/swagger/*", httpSwagger.WrapHandler)
 	//healthcheck endpoint
 	r.Get("/health", handlers.HealthCheckHandler)
 	//proxy endpoint
 	r.Post("/proxy", handlers.PrHandler)
-	//swagger endpoint
-	r.Get("/swagger/*", httpSwagger.WrapHandler)
 
 	log.Println("Starting server: 8080")
 	err := http.ListenAndServe(":8080", r)
