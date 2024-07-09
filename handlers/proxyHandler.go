@@ -12,6 +12,15 @@ import (
 
 var reqStore sync.Map
 
+// PrHandler
+//
+// @Summary Proxy request
+// @Description Proxy an HTTP request to the specified URL.
+// @Accept  json
+// @Produce  json
+// @Param   request body     models.Request true "Proxy request payload"
+// @Success 200 {object} models.Response
+// @Router /proxy [post]
 func PrHandler(w http.ResponseWriter, r *http.Request) {
 	var req models.Request
 	//body decode
