@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	_ "http-proxy-task1/docs"
 	"http-proxy-task1/handlers"
 
 	"github.com/go-chi/chi/v5"
@@ -15,11 +16,17 @@ import (
 // @version 1.0
 // @description This is a simple server for proxying HTTP requests
 // @host localhost:8080
-// @BasePath/
+// @BasePath /
 func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
+
+	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("Welcome to HTTP Proxy Service"))
+	})
+
 	//swagger endpoint
 	r.Get("/swagger/*", httpSwagger.WrapHandler)
 	//healthcheck endpoint
