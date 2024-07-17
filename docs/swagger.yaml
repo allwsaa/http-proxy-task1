@@ -33,20 +33,26 @@ info:
 paths:
   /health:
     get:
+      consumes:
+      - application/json
       description: Check if the service is running.
+      produces:
+      - application/json
       responses:
         "200":
           description: OK
           schema:
             type: string
       summary: Health check
+      tags:
+      - health
   /proxy:
     post:
       consumes:
       - application/json
       description: Proxy an HTTP request to the specified URL.
       parameters:
-      - description: Proxy request payload
+      - description: Proxy request
         in: body
         name: request
         required: true
@@ -60,4 +66,6 @@ paths:
           schema:
             $ref: '#/definitions/models.Response'
       summary: Proxy request
+      tags:
+      - proxy
 swagger: "2.0"

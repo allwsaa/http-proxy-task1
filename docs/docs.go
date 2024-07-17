@@ -18,6 +18,15 @@ const docTemplate = `{
         "/health": {
             "get": {
                 "description": "Check if the service is running.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "health"
+                ],
                 "summary": "Health check",
                 "responses": {
                     "200": {
@@ -38,10 +47,13 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "proxy"
+                ],
                 "summary": "Proxy request",
                 "parameters": [
                     {
-                        "description": "Proxy request payload",
+                        "description": "Proxy request",
                         "name": "request",
                         "in": "body",
                         "required": true,
